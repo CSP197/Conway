@@ -25,6 +25,27 @@ const generateEmptyGrid = () => {
   return rows;
 }
 
+function runEpoch( 
+  setRunning: React.Dispatch<React.SetStateAction<boolean>>, 
+  running: boolean, 
+  runningRef: React.MutableRefObject<boolean>, 
+  runSimulation: () => void, 
+  alwaysRun?: boolean)
+  {
+    if (alwaysRun){
+      setRunning(true);
+      runningRef.current = true;
+      runSimulation();
+    } else {
+      setRunning(!running);
+      if (!running) {
+        runningRef.current = true;
+        runSimulation();
+      }
+  }
+  
+}
+
 function App() {
   const [grid, setGrid] = useState(() => {
     return generateEmptyGrid();
@@ -46,8 +67,6 @@ function App() {
         for( let i = 0; i < numRows; i++){
           for( let j = 0; j < numCols; j++){
             let neighbors = 0;
-            // if( gridCopy[i][j+1] === 1){
-            //   neighbors += 1;
               operations.forEach(([x, y]) => {
                 const newI = i + x;
                 const newJ = j + y;
@@ -61,7 +80,6 @@ function App() {
               } else if( g[i][j] === 0 && neighbors === 3){
                 gridCopy[i][j] = 1;
               }
-            // }
           }
         } 
       });
@@ -69,25 +87,20 @@ function App() {
 
     setTimeout(runSimulation, 100);
   }, []);
-  // console.log(grid);
   return (
     <>
       <button onClick={() => {
-        setRunning(!running);
-        if( !running) {
-          runningRef.current = true;
-          runSimulation();
-        }
+        runEpoch(setRunning, running, runningRef, runSimulation);
         }}>
         {running ? 'STOP' : 'START'}
       </button>
       <button onClick={() => {
-        // setGrid(generateEmptyGrid());
         const rows = [];
         for(let i = 0; i <numRows; i++){
           rows.push(Array.from(Array(numCols), () => Math.random() > 0.8 ? 1 : 0));
         }
         setGrid(rows);
+        runEpoch(setRunning, running, runningRef, runSimulation, true);
       }}>RANDOM</button>
       <button onClick={() => {
         setGrid(generateEmptyGrid());
@@ -127,3 +140,5 @@ function App() {
 }
 
 export default App;
+
+
