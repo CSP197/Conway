@@ -3,8 +3,8 @@ import { produce } from "immer";
 // Number of rows 
 // and columns for
 // the grid
-export const numRows = 50;
-export const numCols = 50;
+// export const numRows = 50;
+// export const numCols = 50;
 
 // List of possible
 // directions to
@@ -22,9 +22,12 @@ export const operations = [
   ];
 
 //
-export const generateEmptyGrid = () => {
+export const generateEmptyGrid = (
+  gridSize: number[]) => {
     const rows = [];
-    for(let i = 0; i <numRows; i++){
+    const numRows = gridSize[0];
+    const numCols = gridSize[1];
+    for(let i = 0; i < numRows; i++){
       rows.push(
         Array.from(
           Array(numCols), 
@@ -46,9 +49,11 @@ export const randomInt = (
 export function Grid(
   grid: number[][], 
   setGrid: React.Dispatch<React.SetStateAction<number[][]>>) {
-    return <div style={{
+    return <div 
+      id='outer'
+      style={{
         display: 'grid',
-        gridTemplateColumns: `repeat(${numCols}, 20px)`
+        gridTemplateColumns: `repeat(${grid[0].length}, 20px)`
       }}>
       {grid.map(
         (rows, i) => rows.map(
