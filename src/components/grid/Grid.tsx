@@ -23,7 +23,8 @@ export const operations = [
 
 //
 export const generateEmptyGrid = (
-  gridSize: number[]) => {
+  gridSize: number[]
+  ) => {
     const rows = [];
     const numRows = gridSize[0];
     const numCols = gridSize[1];
@@ -56,7 +57,7 @@ export function Grid(
     grid, 
     setGrid
   }: Props) {
-    return <div 
+    return (<div 
       id='outer'
       style={{
         display: 'grid',
@@ -84,6 +85,6 @@ export function Grid(
               }} />
           ))
       )}
-    </div>;
+    </div>);
   }
   

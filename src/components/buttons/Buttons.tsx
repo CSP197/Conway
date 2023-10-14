@@ -20,7 +20,7 @@ export const Buttons = (
         gridSize 
     }: Props) => {
         return (
-        <div>
+        <>
             <button 
                 onClick={
                     () => {
@@ -38,7 +38,7 @@ export const Buttons = (
                     dark:border-green-500 dark:text-green-500 dark:hover:text-white \
                     dark:hover:bg-green-600 dark:focus:ring-green-800'
                     >
-                        {running ? 'Stop' : 'Start'}
+                        {running ? 'Pause' : 'Start'}
             </button>
             <button 
                 onClick={
@@ -81,6 +81,6 @@ export const Buttons = (
                 >
                     Clear
             </button>
-        </div>
+        </>
     );
 }
