@@ -45,16 +45,25 @@ export const randomInt = (
     return Math.floor(Math.random() * (max - min + 1)) + min;
   }
 
+interface Props {
+  grid: number[][], 
+  setGrid: React.Dispatch<React.SetStateAction<number[][]>>
+}
+
 // Grid
 export function Grid(
-  grid: number[][], 
-  setGrid: React.Dispatch<React.SetStateAction<number[][]>>) {
+  {
+    grid, 
+    setGrid
+  }: Props) {
     return <div 
       id='outer'
       style={{
         display: 'grid',
         gridTemplateColumns: `repeat(${grid[0].length}, 20px)`
-      }}>
+      }}
+      className="grid"
+      >
       {grid.map(
         (rows, i) => rows.map(
           (_, j) => (

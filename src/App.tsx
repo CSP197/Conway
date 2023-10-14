@@ -3,11 +3,16 @@ import { generateEmptyGrid } from './components/grid/Grid';
 import { Header } from './components/header/Header';
 import { Buttons } from './components/buttons/Buttons';
 import { Grid } from './components/grid/Grid';
-import SizeRange from './components/range/SizeRange';
+import RangeSlider from './components/slider/RangeSlider';
 import GameOfLife from "./GameOfLife";
 
+const SMALLEST_GRID_SIZE = 1;
+
 export default function App() {
-  const [gridSize, setgridSize] = useState([50, 50]);
+  const [
+    gridSize, 
+    setGridSize
+  ] = useState([1,1]);
   const [grid, setGrid] = useState(() => {
     return generateEmptyGrid(gridSize);
   });
@@ -29,9 +34,27 @@ export default function App() {
   return (
     <>
       <Header />
-      {Buttons(setRunning, running, runningRef, runSimulation, setGrid, gridSize)}
-      <SizeRange />
-      {Grid(grid, setGrid)}
+      <span />
+      <Buttons 
+        running={running} 
+        setRunning={setRunning} 
+        runningRef={runningRef} 
+        runSimulation={runSimulation} 
+        setGrid={setGrid} 
+        gridSize={gridSize} 
+      />
+      <span />
+      <RangeSlider 
+        min={SMALLEST_GRID_SIZE} 
+        max={50}
+        gridSize={gridSize}
+        setGridSize={setGridSize}
+      />
+      <span />
+      <Grid 
+        grid={grid} 
+        setGrid={setGrid} 
+      />
     </>
   );
 }
