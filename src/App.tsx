@@ -27,7 +27,7 @@ export default function App() {
       }
       // simulate
       setGrid((g) => GameOfLife(g));
-      setTimeout(runSimulation, 100);
+      setTimeout(runSimulation, 50);
     }, []);
 
   return (
@@ -48,6 +48,7 @@ export default function App() {
         max={50}
         setGrid={setGrid}
         gridSize={gridSize}
+        generateEmptyGrid={generateEmptyGrid}
         setGridSize={setGridSize}
       />
       <span />

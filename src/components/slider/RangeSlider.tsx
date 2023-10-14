@@ -5,6 +5,7 @@ interface Props {
     max: number,
     setGrid: React.Dispatch<React.SetStateAction<number[][]>>,
     gridSize: number[],
+    generateEmptyGrid: (gridSize: number[]) => number[][],
     setGridSize: React.Dispatch<React.SetStateAction<number[]>>
 }
 
@@ -14,6 +15,7 @@ export default function RangeSlider(
         max,
         setGrid,
         gridSize,
+        generateEmptyGrid,
         setGridSize
     }: Props) {
 
@@ -24,22 +26,7 @@ export default function RangeSlider(
         const newValue = +event.target.value;
         setValue(newValue);
         setGridSize([newValue, newValue]);
-        generateNewGrid();
-    }
-
-    function generateNewGrid(){
-        const rows = [];
-        const numRows = gridSize[0];
-        const numCols = gridSize[1];
-        for (let i = 0; i < numRows; i++) {
-            rows.push(
-                Array.from(
-                    Array(numCols), 
-                    () => 0
-                )
-            );
-        }
-        setGrid(rows);
+        setGrid(generateEmptyGrid(gridSize));
     }
 
     return (
