@@ -2,11 +2,11 @@
 
 Built with `Typescript`, using `React.js` and `Tailwind CSS`.
 
-### Screenshot
+### Demo
 
-![Conway's Game of Life](assets/screenshot.jpg "Screenshot")
+![Conway's Game of Life](assets/screengrab.gif "Screengrab")
 
-### Available Scripts
+### Available Commands
 
 In the project directory, you can run:
 
@@ -17,9 +17,4 @@ Opens on [http://localhost:3000](http://localhost:3000).
 
 #### `npm run build`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
+Builds the app for production to the `build` folder.
