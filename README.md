@@ -1,20 +1,14 @@
-# Conway's Game of Life (ft. React.js)
+# Conway's Game of Life (ft. React)
 
-Built with `Typescript`, using `React.js` and `Tailwind CSS`.
+Built with `Typescript`, using `React.js` and `Tailwind CSS`, & hosted on `Github Pages`!
 
-### Demo
+### Screenshot
 
-![Conway's Game of Life](assets/screengrab.gif "Screengrab")
+![Conway's Game of Life](assets/screenshot.jpg "Screenshot")
 
-### Available Commands
+### Commands
 
-In the project directory, you can run:
-
-#### `npm start`
-
-Runs the app in the development mode.\
-Opens on [http://localhost:3000](http://localhost:3000).
-
-#### `npm run build`
-
-Builds the app for production to the `build` folder.
+```
+npm start       // Run the app in the development mode.
+                // Opens on http://localhost:3000.
+```
