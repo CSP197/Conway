@@ -5,7 +5,7 @@ export function Header() {
             leading-none tracking-tight text-gray-900 \
             md:text-5xl lg:text-6xl dark:text-white"
         >
-            Conway's 
+            Conway's{' '}
         <mark 
             className="px-2 text-black bg-green-600 \
             rounded dark:bg-green-500"
